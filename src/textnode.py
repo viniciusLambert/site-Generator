@@ -1,5 +1,5 @@
 from enum import Enum
-
+from leafnode import LeafNode
 class TextType(Enum):
     PLAIN = "plain text",
     BOLD = "bold text",
@@ -28,7 +28,5 @@ class TextNode():
 
     def __repr__(self):
         return f"TextNode({self.text}, {self.text_type.value[0]}, {self.url})"
-
-
 
 

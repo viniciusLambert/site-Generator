@@ -32,7 +32,7 @@ class HTMLNode():
         if self.props != other.props:
             return False
         return True
-
+        
     def to_html(self):
         raise NotImplementedError()
     
