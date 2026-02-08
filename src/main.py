@@ -1,11 +1,9 @@
-from domain.text_node import TextNode
-from domain.text_type import TextType
-from usecases.markdown_parser.splitter import split_nodes_links
+import os
+from infrastructure.copy_static_to_public import copy_directory
+
 
 def main():
-    text_node = TextNode(
-        "This is some anchor text", TextType.LINK, "https://www.boot.dev"
-    )
-    print(text_node)
+    copy_directory("static", "public")        
+
 
 main()
