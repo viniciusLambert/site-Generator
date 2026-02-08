@@ -2,7 +2,7 @@ from usecases.markdown_parser.splitter import split_nodes_delimiter, split_nodes
 from domain.text_node import TextNode
 from domain.text_type import TextType
 
-def text_to_textnodes(text):
+def text_to_textnodes(text: str):
     node = [TextNode(text, TextType.PLAIN)]
     node = split_nodes_delimiter(node, "**", TextType.BOLD)
     node = split_nodes_delimiter(node, "_", TextType.ITALIC)

@@ -1,6 +1,6 @@
 import unittest
 
-from usecases.markdown_parser.extract import extract_markdown_images, extract_markdown_links
+from usecases.markdown_parser.extract import extract_markdown_images, extract_markdown_links, extract_title
 
 class TestExtractMarkdown(unittest.TestCase):
     def test_extract_markdown_images(self):
@@ -14,3 +14,7 @@ class TestExtractMarkdown(unittest.TestCase):
             "This is text with an [link](https://i.imgur.com/zjjcJKZ.png)"
         )
         self.assertListEqual([("link", "https://i.imgur.com/zjjcJKZ.png")], matches)
+
+    def test_extract_markdown_title(self):
+        matches = extract_title("# Title") 
+        self.assertEqual(matches, "Title")

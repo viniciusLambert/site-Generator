@@ -40,10 +40,12 @@ def markdown_to_html_node(markdown):
             case BlockType.UNORDERED_LIST:
                 block = block.split("\n")
                 block = list(map(lambda line: " ".join(line.split()), block))
-                block = list(map(lambda line: line[2:], block)) 
+                block = list(map(lambda line: line[2:], block))
                 unit_list = []
-                for unit in block:
-                   unit_list.append(LeafNode("li", unit)) 
+                for units in block:    
+                    text_nodes = text_to_textnodes(units)
+                    html_nodes = map(text_node_to_html_node, text_nodes)
+                    unit_list.append(ParentNode("li", children=list(html_nodes))) 
                 block_childs.append(ParentNode("ul", children=unit_list))
 
             case BlockType.ORDERED_LIST:
@@ -52,7 +54,9 @@ def markdown_to_html_node(markdown):
                 block = list(map(lambda line: line[3:], block)) 
                 unit_list = []
                 for unit in block:
-                   unit_list.append(LeafNode("li", unit)) 
+                    text_nodes = text_to_textnodes(unit)
+                    html_nodes = map(text_node_to_html_node, text_nodes)
+                    unit_list.append(ParentNode("li", children=list(html_nodes)))
                 block_childs.append(ParentNode("ol", children=unit_list))
 
             

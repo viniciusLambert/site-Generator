@@ -1,9 +1,10 @@
 from domain.html_node import HTMLNode
 from domain.text_node import TextNode
+from domain.leaf_node import LeafNode
 class ParentNode(HTMLNode):
     def __init__(self,
             tag: str,
-            children: list[HTMLNode],
+            children: list[HTMLNode | LeafNode],
             props: dict[str, str] | None = None):
         super().__init__(tag, None, children, props)
 

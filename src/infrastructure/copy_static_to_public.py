@@ -10,6 +10,7 @@ def copy_directory(source_directory: str, destination_directory: str):
     if not os.path.exists(source_directory):
         raise Exception(f"source directory {source_directory} don't exist")
     
+    shutil.rmtree(destination_directory)
     os.makedirs(destination_directory)
     files_to_migrate = os.listdir(source_directory)
     for file in files_to_migrate:
