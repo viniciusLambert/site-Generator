@@ -1,5 +1,5 @@
 from domain.html_node import HTMLNode
-
+from domain.text_node import TextNode
 class ParentNode(HTMLNode):
     def __init__(self,
             tag: str,
