@@ -1,7 +1,7 @@
 import unittest
 
-from parentnode import ParentNode
-from leafnode import LeafNode
+from domain.parent_node import ParentNode
+from domain.leaf_node import LeafNode
 
 class TestParentNode(unittest.TestCase):
     def test_to_html_with_children(self):
@@ -17,7 +17,7 @@ class TestParentNode(unittest.TestCase):
             parent_node.to_html(),
             "<div><span><b>grandchild</b></span></div>",
         )
-    
+
     def test_node_to_html_without_tag(self):
         child_node = LeafNode('b', "child")
         with self.assertRaises(ValueError):
@@ -28,4 +28,3 @@ class TestParentNode(unittest.TestCase):
         with self.assertRaises(ValueError):
             node = ParentNode("div", [])
             node.to_html()
-            

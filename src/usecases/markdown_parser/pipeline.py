@@ -1,5 +1,6 @@
-from .splitNode import split_nodes_delimiter, split_nodes_image, split_nodes_links
-from textnode import TextNode, TextType
+from usecases.markdown_parser.splitter import split_nodes_delimiter, split_nodes_image, split_nodes_links
+from domain.text_node import TextNode
+from domain.text_type import TextType
 
 def text_to_textnodes(text):
     node = [TextNode(text, TextType.PLAIN)]

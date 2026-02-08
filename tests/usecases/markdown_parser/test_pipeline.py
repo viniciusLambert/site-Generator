@@ -1,6 +1,8 @@
 import unittest
-from .textToTextNode import text_to_textnodes
-from textnode import TextNode,TextType
+
+from usecases.markdown_parser.pipeline import text_to_textnodes
+from domain.text_node import TextNode
+from domain.text_type import TextType
 
 class TestTextToTextNode(unittest.TestCase):
 

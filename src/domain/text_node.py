@@ -1,12 +1,4 @@
-from enum import Enum
-from leafnode import LeafNode
-class TextType(Enum):
-    PLAIN = "plain text",
-    BOLD = "bold text",
-    ITALIC = "italic text",
-    CODE = "code text",
-    LINK = "links",
-    IMAGE = "images" 
+from domain.text_type import TextType
 
 class TextNode():
     def __init__(self, text: str, text_type: TextType, url: str | None = None):
@@ -28,5 +20,3 @@ class TextNode():
 
     def __repr__(self):
         return f"TextNode({self.text}, {self.text_type.value[0]}, {self.url})"
-
-

@@ -2,9 +2,9 @@ from __future__ import annotations
 
 class HTMLNode():
     def __init__(
-            self, 
-            tag: str | None = None, 
-            value: str | None = None, 
+            self,
+            tag: str | None = None,
+            value: str | None = None,
             children: list[HTMLNode] | None = None,
             props: dict[str, str] | None = None
         ):
@@ -12,7 +12,7 @@ class HTMLNode():
         self.value = value
         self.children = children
         self.props = props
-    
+
     def __repr__(self):
         return (
             "HTMLNode("
@@ -21,7 +21,7 @@ class HTMLNode():
             f"children: {self.children},"
             f"props: {self.props})"
         )
-    
+
     def __eq__(self, other) -> bool:
         if self.tag != other.tag:
             return False
@@ -32,10 +32,10 @@ class HTMLNode():
         if self.props != other.props:
             return False
         return True
-        
+
     def to_html(self):
         raise NotImplementedError()
-    
+
     def props_to_html(self):
         if not self.props:
             return ""

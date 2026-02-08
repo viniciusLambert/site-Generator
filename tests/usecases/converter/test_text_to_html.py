@@ -1,7 +1,8 @@
 import unittest
 
-from textnode import TextNode, TextType
-from .textNodeToHTMLNode import text_node_to_html_node
+from domain.text_node import TextNode
+from domain.text_type import TextType
+from usecases.converter.text_to_html import text_node_to_html_node
 
 class TestTextNodetoHtmlNode(unittest.TestCase):
     def test_text(self):

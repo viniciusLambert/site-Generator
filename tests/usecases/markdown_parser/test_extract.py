@@ -1,6 +1,6 @@
-from .extractMarkdown import extract_markdown_images, extract_markdown_links
-
 import unittest
+
+from usecases.markdown_parser.extract import extract_markdown_images, extract_markdown_links
 
 class TestExtractMarkdown(unittest.TestCase):
     def test_extract_markdown_images(self):

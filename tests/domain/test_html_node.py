@@ -1,6 +1,6 @@
 import unittest
 
-from htmlnode import HTMLNode
+from domain.html_node import HTMLNode
 
 class TestHtmlNode(unittest.TestCase):
     def test_eq(self):
@@ -17,12 +17,12 @@ class TestHtmlNode(unittest.TestCase):
                     }
                 )
         self.assertEqual(node, node2)
-    
+
     def test_diff_type(self):
-        node = HTMLNode(value="normal text") 
-        node2 = HTMLNode(value="different text") 
+        node = HTMLNode(value="normal text")
+        node2 = HTMLNode(value="different text")
         self.assertNotEqual(node, node2)
-    
+
     def test_different_tag(self):
         node = HTMLNode("<small>", "TextType.LINK")
         node2 = HTMLNode("<large>", "TextType.LINK")

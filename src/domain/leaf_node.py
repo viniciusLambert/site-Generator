@@ -1,19 +1,19 @@
-from htmlnode import HTMLNode
+from domain.html_node import HTMLNode
 
 class LeafNode(HTMLNode):
-    def __init__(self, 
+    def __init__(self,
             tag: str | None,
-            value: str, 
+            value: str,
             props: dict[str, str] | None = None):
         super().__init__(tag, value, None, props)
 
     def to_html(self):
         if(not self.value):
             raise ValueError("All leaf nodes must have a value")
-        
+
         if(not self.tag):
             return self.value
-        
+
         html_string = f"<{self.tag}"
         if(self.props):
             html_string += f" {super().props_to_html()}>"
