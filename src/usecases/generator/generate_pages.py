@@ -3,7 +3,7 @@ import os
 from usecases.converter.markdown_to_html_node import markdown_to_html_node
 from usecases.markdown_parser.extract import extract_title
 
-def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, base_path):
     if not os.path.exists(dir_path_content):
         raise Exception(f"source directory {dir_path_content} don't exist")
     
@@ -16,12 +16,12 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
         destination_file_path = os.path.join(dest_dir_path, file)
         if(os.path.isfile(source_file_path)):
             destination_file_path = destination_file_path.removesuffix(".md") + ".html"
-            generate_page(source_file_path, template_path, destination_file_path)
+            generate_page(source_file_path, template_path, destination_file_path, base_path)
         else:
             os.makedirs(destination_file_path, exist_ok=True)
-            generate_pages_recursive(source_file_path, template_path, destination_file_path) 
+            generate_pages_recursive(source_file_path, template_path, destination_file_path, base_path) 
 
-def generate_page(from_path, template_path, dest_path):
+def generate_page(from_path, template_path, dest_path, base_path):
     print(f"Generating page from {from_path} to {dest_path} using {template_path}")
 
     md_content = get_file_content(from_path)
@@ -31,6 +31,8 @@ def generate_page(from_path, template_path, dest_path):
     title = extract_title(md_content)
     template = template.replace("{{ Title }}", title)
     template = template.replace("{{ Content }}", nodes.to_html())
+    template = template.replace('href="/', f'href="{base_path}')
+    template = template.replace('src="/', f'src="{base_path}')
 
     dir_name = os.path.dirname(dest_path)
     
